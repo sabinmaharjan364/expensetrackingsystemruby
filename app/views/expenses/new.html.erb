@@ -1,0 +1,5 @@
+<%= form_for(Expense.new) do |form| %>
+    <%= form.text_field :title%>
+    <%= form.collection_select :category_id, Category.all, :id, :title%>
+    <%= form.submit %>
+<% end %>
