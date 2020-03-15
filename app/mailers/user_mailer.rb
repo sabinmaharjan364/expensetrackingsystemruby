@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+    class UserMailer < ApplicationMailer
     default from: 'notifications@example.com'
    
     def welcome_email(user)

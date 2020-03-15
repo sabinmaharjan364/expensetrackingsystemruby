@@ -14,6 +14,18 @@
   <strong>Login:</strong>
   <%= @user.login %>
 </p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.avatar.thumb.url %>
+  <%= image_tag @user.avatar.url %>
+</p>
+<p>
+  <strong>expense:</strong>
+  <%= @user.expenses.each do |expense| %>
+    <%= expense.title %>
+    <br/>
+    <% end %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

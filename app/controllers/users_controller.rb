@@ -25,11 +25,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    
+    # @user.avatar = params[:file] # Assign a file like this, or
+    
+    
+ 
 
     respond_to do |format|
       if @user.save
-        byebug
-        UserMailer.welcome_email(@user).deliver_now
+        UserMailer.welcome_email(@user).deliver_later
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -71,6 +75,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :login)
+ 
+      params.require(:user).permit(:name, :email, :login,:avatar , expense_ids: [] )
     end
 end
