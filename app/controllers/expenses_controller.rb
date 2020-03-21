@@ -3,10 +3,7 @@ class ExpensesController < ApplicationController
         @expense=Expense.new
     end   
     def create
-        byebug
-
         @expense=Expense.new expense_params
-
         # a=params[:expense][:title] 
         # puts a
         @expense.save

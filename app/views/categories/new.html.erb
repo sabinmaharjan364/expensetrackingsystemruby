@@ -1,4 +1,7 @@
 <%= form_for(Category.new) do |form| %>
-    <% form.text_field :name%>
-    <% form.submit %>
+    <%= form.text_field :title%>
+    <%= form.select :type, ["ExpenseCategory","IncomeCategory"]%>
+
+
+    <%= form.submit %>
 <% end %>

@@ -4,8 +4,10 @@ class CategoriesController < ApplicationController
     end
     def create
         @category= Category.new categories_params
-        if @categories.save
-            redirect_to @category
+        
+        if @category.save
+            
+            redirect_to category_path(@category)
         else
             render :new
         end
@@ -31,6 +33,6 @@ class CategoriesController < ApplicationController
         redirect_to action: :index
     end
     def categories_params
-        params.require(:category).permit(:title)
+        params.require(:category).permit(:title, :type)
     end
 end

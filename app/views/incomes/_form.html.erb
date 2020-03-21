@@ -1,0 +1,39 @@
+<%= form_with(model: income, local: true) do |form| %>
+  <% if income.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(income.errors.count, "error") %> prohibited this income from being saved:</h2>
+
+      <ul>
+        <% income.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categories_id %>
+    <%= form.text_field :categories_id %>
+
+    <%= form.fields_for :category,  @expense.build_category do |category_form| %>
+      <%= category_form.label :title %>
+      <%= category_form.text_field :title %>
+      <% end %>
+
+<%= form.collection_select :user_ids, User.all, :id, :name , {}, multiple: true%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
